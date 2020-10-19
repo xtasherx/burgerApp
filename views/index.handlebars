@@ -1,1 +1,43 @@
-<h1>Eat Da Burger</h1>
+<div class="container">
+    <div class="jumbotron bg-dark text-white m-5 p-0 text-center d-flex  align-items-center">
+        <div class="container align-self-start" style="padding: 0px;"><img src="/burger.jpg" class="img"
+                alt="Responsive image" style="max-height: 400px;"></div>
+        <div class="container">
+            <h1 class="display-4">Eat the Burger</h1>
+            <p class="lead">Add new burgers to the list and then devour them. </p>
+            <hr class="my-4">
+            <div class="container-sm">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Add a burger" aria-label="add burger"
+                        aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container d-flex">
+    <div class="container-sm">
+        <h3 class="text-center">Available Burgers</h3>
+        <ul class="list-group m-5">
+            {{#each burgers}}
+            <li class="list-group-item">Cras justo odio<button data-id="{{this.id}}"
+                    class="btn btn-outline-secondary m-3">{{this.name}}</button>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="container-sm">
+        <h3 class="text-center">Devoured Burgers</h3>
+        <ul class="list-group m-5">
+            {{#each devoured}}
+            <li class="list-group-item">Cras justo odio<button data-id="{{this.id}}
+                    class=" btn btn-outline-secondary m-3">{{this.name}}</button>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
