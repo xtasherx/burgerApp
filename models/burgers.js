@@ -1,11 +1,13 @@
 const orm = require('../config/orm.js');
 
 var burgers = {
-selectAll: orm.selectAll("burgers"),
+selectAll: function(){ orm.selectAll("burgers", function(res){
+    return res;
+})},
 
-insertOne:orm.insertOne("burgers","burgerName","devoured","double cheeseburger",false),
+insertOne: function(){orm.insertOne("burgers","burgerName","devoured","double cheeseburger",false)},
 
-updateOne: orm.updateOne("burgers","devoured", false, 2),
+updateOne: function (){ orm.updateOne("burgers","devoured", false, 2)},
 }
 
 module.exports = burgers;

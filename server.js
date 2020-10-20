@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require("express-handlebars");
 const connection = require("./config/connection");
+const router = require('./controllers/burgersController.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,5 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 // not sure this is needed --- check later 
 app.use(express.json());
 
+app.use('/', router);
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+app.listen(PORT, function() {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+  });

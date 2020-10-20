@@ -1,8 +1,17 @@
 const express = require('express');
-const burger = require('../models/burgers.js');
+const router = express.Router();
+const burgers = require('../models/burgers.js');
 
 
-app.get("/", function(req, res) {
-      res.render("single-quote", data[0]);
-    });
+
+router.get("/", function (req, res) {
+  burgers.selectAll(function (data) {
+      var hbsObject = {
+          burgers: data
+        };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
   });
+});
+
+  module.exports = router;
