@@ -1,3 +1,4 @@
+const { updateOne } = require('../config/orm.js');
 const orm = require('../config/orm.js');
 
 var burgers = {
@@ -13,13 +14,14 @@ var burgers = {
     })
     },
 
-    updateOne: function (val1,val2,cb){
-        orm.updateOne("burgers","devoured", val1, val2, function(res){
+    updateOne: function (val,val2,cb){
+        orm.updateOne("burgers","devoured", val, val2, function(res){
             cb(res);
-            console.log(res);
+            
         })
     },
 }
+
 
 
 module.exports = burgers;

@@ -23,9 +23,9 @@ const orm = {
         }
       });
     },
-    updateOne: function(table,col1,val1,val2,cb) {
+    updateOne: function(table,col1,val,val2,cb) {
     const queryString = "UPDATE ?? SET ?? = ? WHERE id = ?";
-    connection.query(queryString, [table,col1,val1,val2], function(err, result) {
+    connection.query(queryString, [table,col1,val,val2], function(err, result) {
       if (err) {
         throw err;
       } else {

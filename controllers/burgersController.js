@@ -9,21 +9,20 @@ const burgers = require('../models/burgers.js');
         var burgerObject = {
             burgers: data
           };
-        console.log(burgerObject);
+  
         res.render("index",burgerObject);
     });
   });
 
   router.post("/burgers", function (req, res) {
-    console.log(req.body.burgerName);
     burgers.insertOne(req.body.burgerName,function () {
       res.redirect("/");
     })
   });
 
 
-  router.put("burgers/:id", function (req, res) {
-    
+  router.put("/burgers/:id", function (req, res) {
+    console.log(req.params.id);
     burgers.updateOne(true,req.params.id,function () {
       res.redirect("/");
     })
