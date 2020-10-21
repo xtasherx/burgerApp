@@ -1,42 +1,47 @@
 <div class="container">
-    <div class="jumbotron bg-dark text-white m-5 p-0 text-center d-flex  align-items-center">
-        <div class="container align-self-start" style="padding: 0px;"><img src="/burger.jpg" class="img"
-                alt="Responsive image" style="max-height: 400px;"></div>
+    <div class="jumbotron bg-dark text-white m-5 text-center d-flex align-items-center">
         <div class="container">
-            <h1 class="display-4">Eat the Burger</h1>
+            <h1 class="display-3"><i class="fas fa-hamburger"></i> Eat the Burger <i class="fas fa-hamburger"></i></h1>
             <p class="lead">Add new burgers to the list and then devour them. </p>
             <hr class="my-4">
-            <div class="container-sm">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Add a burger" aria-label="add burger"
-                        aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add!</button>
+            <div class="container">
+                <form id="add-burger" action="/burgers" class="create-form" method="POST">
+                    <div class="form-group d-flex flex-column">
+                        <input type="text" id="enter-burger" name="burgerName" class="form-control m-2">
+                        <button type="submit" class="btn btn-outline-secondary m-2" id="submit-burger">Add
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <div class="container d-flex">
     <div class="container-sm">
         <h3 class="text-center">Available Burgers</h3>
-        <ul class="list-group m-5">
+        <ul class="list-group m-5" style="text-transform: capitalize;">
             {{#each burgers}}
-            <li class="list-group-item">Cras justo odio<button data-id="{{this.id}}"
-                    class="btn btn-outline-secondary m-3">{{this.name}}</button>
-            </li>
+            {{#unless this.devoured}}
+            <form action="/burgers/{{this.id}}?_method=PUT" method="POST" class="update-button">
+                {{this.burgerName}}
+                <button type="submit" class="btn btn-outline-secondary" id="burger-ready">Devour</button>
+            </form>
+
+            {{/unless}}
             {{/each}}
         </ul>
     </div>
     <div class="container-sm">
         <h3 class="text-center">Devoured Burgers</h3>
-        <ul class="list-group m-5">
-            {{#each devoured}}
-            <li class="list-group-item">Cras justo odio<button data-id="{{this.id}}
-                    class=" btn btn-outline-secondary m-3">{{this.name}}</button>
+        <ul class="list-group m-5" style="text-transform: capitalize;">
+            {{#each burgers}}
+            {{#if this.devoured}}
+            <li class="list-group-item">{{this.burgerName}}
             </li>
+            {{/if}}
             {{/each}}
         </ul>
     </div>
