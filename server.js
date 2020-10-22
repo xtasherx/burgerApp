@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const exphbs = require("express-handlebars");
 const connection = require("./config/connection");
@@ -22,4 +23,3 @@ app.listen(PORT, function() {
     // Log (server-side) when our server has started
     console.log("Server listening on: http://localhost:" + PORT);
   });
-  
