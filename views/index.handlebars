@@ -27,8 +27,8 @@
             {{#unless this.devoured}}
             <li class="list-group-item d-flex justify-content-between">
                 {{this.burgerName}}
-                <button type="submit" class="btn btn-outline-secondary" data-id={{this.id}} data-bool="true"
-                    id="burgerWaiting">Devour</button>
+                <button type="submit" class="btn btn-outline-secondary burgerWaiting" data-id={{this.id}}
+                    data-bool="true">Devour</button>
             </li>
             {{/unless}}
             {{/each}}

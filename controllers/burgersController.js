@@ -21,10 +21,10 @@ const burgers = require('../models/burgers.js');
   });
 
 
-  router.put("/burgers/:id", function (req, res) {
+  router.put("/api/burgers/:id", function (req, res) {
     console.log(req.params.id);
     burgers.updateOne(true,req.params.id,function () {
-      res.redirect("/");
+      res.json({status:'success'});
     })
   });
 
