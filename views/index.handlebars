@@ -25,10 +25,11 @@
         <ul class="list-group m-5" style="text-transform: capitalize;">
             {{#each burgers}}
             {{#unless this.devoured}}
-            <form action="/burgers/{{this.id}}?_method=PUT" method="POST" class="update-button">
+            <li class="list-group-item d-flex justify-content-between">
                 {{this.burgerName}}
-                <button type="submit" class="btn btn-outline-secondary" id="burger-ready">Devour</button>
-            </form>
+                <button type="submit" class="btn btn-outline-secondary" data-id={{this.id}} data-bool="true"
+                    id="burgerWaiting">Devour</button>
+            </li>
             {{/unless}}
             {{/each}}
         </ul>

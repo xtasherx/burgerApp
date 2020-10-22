@@ -7,12 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Use the express.static middleware to serve static content for the app from the "public" directory in the application directory.
-// not sure this is needed --- check later 
 app.use(express.static("public"));
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
-// not sure this is needed --- check later 
 app.use(express.json());
 
 app.use('/', router);
@@ -24,3 +22,4 @@ app.listen(PORT, function() {
     // Log (server-side) when our server has started
     console.log("Server listening on: http://localhost:" + PORT);
   });
+  
